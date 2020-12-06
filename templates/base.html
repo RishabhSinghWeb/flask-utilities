@@ -26,22 +26,22 @@
         
         {% if todo.complete %}
             <a href="/{{ todo.id }}" style="text-decoration:none;">
-                <b style="color:#00a600;font-size:120%;">{{ todo.title }} </b>
+                <strong style="color:#00a600;font-size:120%;">{{ todo.title }} </strong>
                 
-                <b style="background:#4f0;color:#fff;" class="button">Undone</b>
+                <strong style="background:#4f0;color:#fff;" class="button">Undone</strong>
             </a>
 
             <a href="/del/{{todo.id}}" class="button" style="color: #fff;background-color:#4f0;">
                 Delete</a>
         {% else %}
             <a href="/{{ todo.id }}" style="text-decoration:none;">
-                <b style="color:#ff006c;font-size:120%;">{{ todo.title }}</b>
+                <strong style="color:#ff006c;font-size:120%;">{{ todo.title }}</strong>
                 
-                <b style="background:#ff006c;color:#fff;" class="button">Done</b>
+                <strong style="background:#ff006c;color:#fff;" class="button">Done</strong>
             </a>
 
-            <a href="/del/{{todo.id}}" class="button" style="color:#fff;background-color: #f00;">
-                Delete</a>
+            <strong href="/del/{{todo.id}}" class="button" style="color:#fff;background-color: #f00;">
+                Delete</strong>
         {% endif %}
     </div>
 {% endfor %}
