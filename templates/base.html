@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Todo</title>
+<style type="text/css">
+.button{
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 800;
+    border-radius: .25rem;
+    text-decoration: none;
+}
+</style>
+</head>
+<body style="">
+<form style="margin:auto;display:table;" action="/add" method="post">
+    <input name="pass" placeholder="TODO" style="font-size:120%;">
+    <button type="submit" class="button" style="background: #fff;color: black;">
+        Add
+    </button>
+</form>
+<hr>
+{% for todo in todo_list %}
+    <div style="margin:auto;display:table;">
+        
+        {% if todo.complete %}
+            <a href="/{{ todo.id }}" style="text-decoration:none;">
+                <b style="color:#00a600;font-size:120%;">{{ todo.title }} </b>
+                
+                <b style="background:#4f0;color:#fff;" class="button">Undone</b>
+            </a>
+
+            <a href="/del/{{todo.id}}" class="button" style="color: #fff;background-color:#4f0;">
+                Delete</a>
+        {% else %}
+            <a href="/{{ todo.id }}" style="text-decoration:none;">
+                <b style="color:#ff006c;font-size:120%;">{{ todo.title }}</b>
+                
+                <b style="background:#ff006c;color:#fff;" class="button">Done</b>
+            </a>
+
+            <a href="/del/{{todo.id}}" class="button" style="color:#fff;background-color: #f00;">
+                Delete</a>
+        {% endif %}
+    </div>
+{% endfor %}
+</body>
+</html>
