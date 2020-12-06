@@ -54,7 +54,7 @@ if __name__ == "__main__":
 	with open('./log', 'a+') as log:
 		try:
 			db.create_all()
-			app.run(host="127.0.0.1", port=80, threaded=True, debug=False)
+			app.run(host="127.0.0.1", port=443, threaded=True, debug=False)
 			log.write("done adding wsgi app\n")
 		except Exception:
 			log.write(repr(e))
