@@ -16,7 +16,7 @@ class Todo(db.Model):
 
 @app.route("/")
 def home():
-	return render_template("base.html", todo_list=Todo.query.all())
+	return render_template("base.html", todo_list=Todo.query.all(),aaaa="aaa")
 
 
 @app.route("/add", methods=["POST"])
@@ -35,7 +35,7 @@ def update(todo_id):
 	return redirect(url_for("home"))
 
 
-@app.route("/del/<int:todo_id>")
+@app.route("/<int:todo_id>/del")
 def delete(todo_id):
 	db.session.delete(Todo.query.filter_by(id=todo_id).first())
 	db.session.commit()
@@ -48,13 +48,13 @@ def a():
 
 @app.route("/aa", methods=["POST"])
 def aa():
-	return redirect("/")
+	return "hi"
 
 if __name__ == "__main__":
 	with open('./log', 'a+') as log:
 		try:
 			db.create_all()
-			app.run(port=80, threaded=True, debug=False)
+			app.run(host="0.0.0.0",port=80, threaded=True, debug=False)
 			log.write("done adding wsgi app\n")
 		except Exception:
 			log.write(repr(e))

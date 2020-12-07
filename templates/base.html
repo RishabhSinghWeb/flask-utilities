@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Todo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style type="text/css">
 .button{
     padding: .25em .4em;
@@ -11,19 +12,14 @@
     border-radius: .25rem;
     text-decoration: none;
 }
+.aaa{
+	display: none
+}
 </style>
-
-<script type="text/javascript">
-document.getElementById("passw").focus(); 
-</script>
-
-<script type="text/javascript">
-document.children[0].children[1].children[0].children[0].focus()
-</script>
 </head>
 <body style="">
 <form style="margin:auto;display:table;" action="/add" method="post">
-    <input id="passw" name="pass" placeholder="TODO" style="font-size:120%;">
+    <input id="passw" name="pass" placeholder="TODO" style="font-size:120%;" autocomplete="off">
     <button type="submit" class="button" style="background: #fff;color: black;">
         Add
     </button>
@@ -33,13 +29,13 @@ document.children[0].children[1].children[0].children[0].focus()
     <div style="margin:auto;display:table;">
         
         {% if todo.complete %}
-            <a href="/{{ todo.id }}" style="text-decoration:none;">
-                <strong style="color:#00a600;font-size:120%;">{{ todo.title }} </strong>
+            <a href="/{{todo.id}}" class=""style="text-decoration:none;">
+                <strong style="color:#00a600;font-size:120%;">{{todo.title}} </strong>
                 
-                <strong style="background:#4f0;color:#e00;" class="button">Undone</strong>
+                <strong style="background:#4f0;color:#fff;" class="button">Undone</strong>
             </a>
 
-            <a href="/del/{{todo.id}}" class="button" style="color: #fff;background-color:#4f0;">
+            <a href="/{{todo.id}}/del" class="button" style="color: #fff;background-color:#4f0;">
                 Delete</a>
         {% else %}
             <a href="/{{ todo.id }}" style="text-decoration:none;">
@@ -48,7 +44,7 @@ document.children[0].children[1].children[0].children[0].focus()
                 <strong style="background:#ff006c;color:#fff;" class="button">Done</strong>
             </a>
 
-            <a class="button" style="color:#fff;background-color:#828282;user-select:none;">
+            <a href="/{{todo.id}}/del" class="button" style="color:#fff;background-color:#828282;user-select:none;">
                 Delete</a>
         {% endif %}
     </div>
